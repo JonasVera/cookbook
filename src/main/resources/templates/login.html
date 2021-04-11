@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html xmlns:th="http://www.thymeleaf.org">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+	<script
+  		src="https://code.jquery.com/jquery-1.12.4.js"
+  		integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  		crossorigin="anonymous"></script>
+    <title>CookBook</title>
+  </head>
+  <body >
+
+  <nav class="navbar navbar-light bg-primary">
+   <div class="container-fluid">
+    <a class="navbar-brand">CookBooK</a>
+    <form th:action="@{/login}" method="post" class="d-flex">
+	  <input name="username" type="text" placeholder="E-mail" class="form-control me-2"  required>
+	  <input name="password" type="password" placeholder="senha"class="form-control me-2"   required>
+		  <button class="btn btn-dark" type="submit">Login</button>
+	 </form>
+    </div>
+  </nav>
+	<div class="container-fluid">
+		
+	    <div class="row justify-content-center col-12" style="margin-top:10%">
+	    
+	    <div class="card col-4 shadow-lg p-3 mb-5 bg-white rounded">
+            <div class="card-body">
+            	<img th:src="@{/register.png}" style=" display: block;
+  				margin-left: auto;
+  				margin-right: auto;
+  				width: 40%;"/>
+  				<h4> Cadastre-se agora mesmo e fique por dentro de receitas incriveis </h4> <br />
+				
+	 			  <div th:if="${feedBackEmail}">
+    				 <div class="alert alert-danger" role="alert">
+ 			 		   <span th:text="${feedBackEmail}"></span>
+	 			     </div>
+  				 </div>
+  				 <div th:if="${feedBackCadastro}">
+    				 <div class="alert alert-primary" role="alert">
+ 			 		   <span th:text="${feedBackCadastro}"></span>
+	 			     </div>
+  				 </div>
+  				 
+				<form th:action="@{/registrarUsuario}" method="POST">
+					<div class="col-auto d-grid gap-2">
+						<input name="nomeCompleto" placeholder="Nome completo" class="form-control"  required id="userName"  >
+						<small>Informe seu nome completo</small>
+						<input name="email" type="email" placeholder="Email" class="form-control" id="email"  >
+						<small>Informe seu e-mail</small>
+						<input name="confirmarEmail" type="email" placeholder="Confirmar email" class="form-control" required id="confirmemail"  >
+						<small>Informe seu e-mail novamente para confirmar</small>
+						<input name="dataNascimento" type="date" placeholder="Data de Nascismento"class="form-control" required id="dataNascimento"  >
+						<small>Informe sua data de nascimento</small>
+						<input name="senha" type="password" placeholder="senha"class="form-control" required id="senhaCadastro">
+						<small>Informe sua senha</small>
+						<select name="sexo" class="form-select form-select-lg mb-3" required aria-label=".form-select-lg">
+						    <option select value="Masculino">Masculino</option>
+							<option value="Feminino">Feminino</option>
+							<option value="Indefinindo">Não Informar</option>
+						</select>
+						<small>Informe o sexo</small>
+					</div>
+					<br/>
+					<div class="row">
+						<button type="submit" class="btn justify-content-center btn-primary btn-small">Registra-se</button>
+					</div>
+				</form>
+			</div>
+			
+             </div> 
+	   </div>
+	</div>
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="MdLivro">Cadastre-se agora </h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+
+			    </div> 
+			   
+		      </div>
+		      
+		    </div>
+		  </div>
+		</div>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+   
+  </body>
+</html>
+ 
